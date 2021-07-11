@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { APND } from './models/automata';
 
 @Component({
   selector: 'app-root',
@@ -37,7 +38,12 @@ export class AppComponent {
     }else {
       this.arrayInput = inputs.trim().split('');
       this.showMessage('success', 'Comenzemos', 'Empezara a resolver el automata para verificar si es palindrome.')
+      this.arrayInput.push('#');
       console.log(this.arrayInput)
+      let terminado: string[] = this.arrayInput;
+      let apdn = new APND(terminado);
+      apdn.recorrer();
+      console.log(apdn)
     }
   }
 
