@@ -2,17 +2,21 @@ import { Stack } from './stack';
 export class APND {
     palabra: string[];
     stack = new Stack();
+    movimientos: string[] = [...this.stack.stack];
+    estados: string[] = [];
     constructor(palabra: string[]){
         this.palabra = palabra;
     }
     
     recorrer(){
-        let sizePalabra = Math.round(this.palabra.length / 2)-1;
+        let tamMitadPalabra = Math.round(this.palabra.length / 2)-1;
         this.palabra.forEach((element, index) => {
-            if(index < sizePalabra){
+            if(index < tamMitadPalabra){
                 this.reglasPrimeraMitad(element)
+                this.estados.push('p')
             }else{
                 this.reglasSegundaMitad(element)
+                this.estados.push('q');
             }
         })
     }
@@ -22,31 +26,25 @@ export class APND {
             case 'a':
                 switch (this.stack.peek()) {
                     case '#':
-                        console.log('entro asi:')
-                        this.stack.print();
                         this.stack.pop();
                         this.stack.push('#');                      
                         this.stack.push('a');
-                        console.log('sale así');
-                        this.stack.print();
+                        this.movimientos.push('pop #');
+                        this.movimientos.push('push #a')
                         break;
                     case 'a':
-                        console.log('entro asi:')
-                        this.stack.print();
                         this.stack.pop();
                         this.stack.push('a');
                         this.stack.push('a');
-                        console.log('sale así');
-                        this.stack.print();
+                        this.movimientos.push('pop a');
+                        this.movimientos.push('push aa')
                         break;
                     case 'b':
-                        console.log('entro asi:')
-                        this.stack.print();
                         this.stack.pop();
                         this.stack.push('b');
                         this.stack.push('b');
-                        console.log('sale así');
-                        this.stack.print();
+                        this.movimientos.push('pop b');
+                        this.movimientos.push('push bb')
                         break;
                     default:
                         break;
@@ -55,31 +53,25 @@ export class APND {
             case 'b':
                 switch (this.stack.peek()) {
                     case '#':
-                        console.log('entro asi:')
-                        this.stack.print();
                         this.stack.pop();
                         this.stack.push('#');                      
                         this.stack.push('a');
-                        console.log('sale así');
-                        this.stack.print();
+                        this.movimientos.push('pop #');
+                        this.movimientos.push('push #a');
                         break;
                     case 'a':
-                        console.log('entro asi:')
-                        this.stack.print();
                         this.stack.pop();
                         this.stack.push('a');
                         this.stack.push('b');
-                        console.log('sale así');
-                        this.stack.print();
+                        this.movimientos.push('pop a');
+                        this.movimientos.push('push ab');
                         break;
                     case 'b':
-                        console.log('entro asi:')
-                        this.stack.print();
                         this.stack.pop();
                         this.stack.push('b');
                         this.stack.push('b');
-                        console.log('sale así');
-                        this.stack.print();
+                        this.movimientos.push('pop b');
+                        this.movimientos.push('push bb');                        
                         break;
                     default:
                         break;
@@ -94,30 +86,23 @@ export class APND {
         switch (letra) {
             case 'a':
                 if(this.stack.peek() === 'a'){
-                    console.log('entro asi:')
-                    this.stack.print();
                     this.stack.pop();
-                    console.log('sale así');
-                    this.stack.print();
+                    this.movimientos.push('pop a');
                 }
                 break;
             case 'b':
                 if(this.stack.peek() === 'b'){
-                    console.log('entro asi:')
-                    this.stack.print();
                     this.stack.pop();
-                    console.log('sale así');
-                    this.stack.print();
+                    this.movimientos.push('pop b');
                 }
                 break;
             case '':
                 if(this.stack.peek() === '#'){
-                    console.log('entro asi:')
-                    this.stack.print();
                     this.stack.pop();
                     this.stack.push('#');
-                    console.log('sale así');
-                    this.stack.print();
+                    this.movimientos.push('pop #');
+                    this.movimientos.push('push #');
+                    this.estados.push('r')
                 }else {
                     console.log('No es palindromo');
                 }

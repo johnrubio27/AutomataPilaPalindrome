@@ -44,8 +44,12 @@ export class AppComponent {
       this.arrayInput.push('');
       let terminado: string[] = this.arrayInput;
       let apdn = new APND(terminado);
+
       apdn.recorrer();
-      // apdn.stack.print();
+      console.log(apdn.movimientos);
+      apdn.estados.pop();
+      console.log(apdn.estados);
+
     }
   }
 
