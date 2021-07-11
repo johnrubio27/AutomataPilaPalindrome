@@ -36,14 +36,16 @@ export class AppComponent {
       console.log('Es impar');
       this.showMessage('error', 'Error', 'La entrada que ingreso es Impar, solo resolvemos par.')
     }else {
+
       this.arrayInput = inputs.trim().split('');
       this.showMessage('success', 'Comenzemos', 'Empezara a resolver el automata para verificar si es palindrome.')
-      this.arrayInput.push('#');
-      console.log(this.arrayInput)
+      
+      // Ingresamos un elemento más para representar el vacío (#) cuando termina la palabra 
+      this.arrayInput.push('');
       let terminado: string[] = this.arrayInput;
       let apdn = new APND(terminado);
       apdn.recorrer();
-      console.log(apdn)
+      // apdn.stack.print();
     }
   }
 
