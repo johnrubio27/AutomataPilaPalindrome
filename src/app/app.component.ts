@@ -13,6 +13,7 @@ export class AppComponent {
   title = 'AutomataPilaPalindromePar';
 
   esPar: boolean = false;
+  esPalindrome: boolean = false;
 
   arrayInput!: string[];
 
@@ -24,6 +25,11 @@ export class AppComponent {
     {label: 'b,# / #b'},
     {label: 'a,# / #b'}
   ]
+
+  movimientos: string[] = [];
+  estados: string[] = [];
+  severity: string = 'error';
+  text: string = 'No es Palindrome.';
 
   estadoQ: Regla[] = [
     {label: 'b,b / λ'},
@@ -72,8 +78,18 @@ export class AppComponent {
 
       apdn.recorrer();
       console.log(apdn.movimientos);
+      this.movimientos = apdn.movimientos;
       apdn.estados.pop();
       console.log(apdn.estados);
+      this.estados = apdn.estados;
+      this.esPalindrome = apdn.esPalindrome;
+      if(this.esPalindrome){
+        this.severity = 'success';
+        this.text = 'Es palindrome';
+      }else{
+        this.severity = 'error'
+        this.text = 'No es palindrome';
+      }
     }
   }
 

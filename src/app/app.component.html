@@ -17,8 +17,13 @@
   <p-toast position="bottom-center" key="bc"></p-toast>
   <p-toast position="top-left" key="tl"></p-toast>
 </div>
-<div class="p-d-flex p-jc-center p-mt-5">
-  <div *ngIf="esPar">
+<ng-container *ngIf="esPar">
+  <div class="p-d-flex p-jc-center p-mt-5">
+    <p-fieldset legend="Es Palindrome?" [toggleable]="true">
+      <p-message [severity]="severity" [text]="text" styleClass="p-mr-2"></p-message>
+    </p-fieldset>
+  </div>
+  <div class="p-d-flex p-jc-center p-mt-5">
     <p-fieldset legend="Reglas de transicion de estados" [toggleable]="true">
       <div class="p-d-flex">
         <div class="p-mr-4">
@@ -36,4 +41,31 @@
       </div>
     </p-fieldset>
   </div>
-</div>
+  <div class="p-d-flex p-jc-center p-mt-5">
+    <p-fieldset legend="Reglas de transicion de estados" [toggleable]="true">
+      <div class="p-d-flex">
+        <div class="p-mr-4">
+          <h5>Estados</h5>
+          <div class="p-col">
+            <p-avatar label="0 P" styleClass="p-mr-2" size="large" shape="circle"
+              [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
+          </div>
+          <div class="p-col" *ngFor="let item of estados">
+            <p-avatar label="{{item}}" styleClass="p-mr-2" size="large" shape="circle"
+            [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
+            <!-- <div class="box">{{item}}</div> -->
+          </div>
+        </div>
+        <p-divider layout="vertical"></p-divider>
+        <div class="p-mr-4">
+          <h5>Transiciones</h5>
+          <div class="p-col" *ngFor="let item of movimientos">
+            <div class="box">{{item}}</div>
+          </div>
+        </div>
+      </div>
+      <p-divider></p-divider>
+
+    </p-fieldset>
+  </div>
+</ng-container>
