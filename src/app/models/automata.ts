@@ -94,7 +94,7 @@ export class APND {
                 if(this.stack.peek() === 'b'){
                     this.stack.pop();
                     this.movimientos.push('pop b');
-                }
+                }    
                 break;
             case '':
                 if(this.stack.peek() === '#'){

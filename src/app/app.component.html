@@ -2,21 +2,38 @@
   <form [formGroup]="formAutomata" (ngSubmit)="capturarArray">
     <div class=" p-as-center p-mb-2 p-mt-5">
       <span class="p-float-label">
-        <input id="inputs"
-               type="text" 
-               pInputText
-               pTooltip="Ingrese su palabra (Solo letra a y b en minuscula)" 
-               [pKeyFilter]="blockSpace" 
-               formControlName="inputs">
+        <input id="inputs" type="text" pInputText pTooltip="Ingrese su palabra (Solo letra a y b en minuscula)"
+          [pKeyFilter]="blockSpace" formControlName="inputs">
         <label for="inputs">Entrada</label>
       </span>
     </div>
     <div class=" p-as-center">
       <button pButton type="submit" class="p-ml-6" (click)="capturarArray()">
-        <img alt="logo" src="assets/automata.svg" style="width: 1.5rem"/>
+        <img alt="logo" src="assets/automata.svg" style="width: 1.5rem" />
         <span class="p-ml-2 p-text-bold">Iniciar</span>
       </button>
     </div>
   </form>
   <p-toast position="bottom-center" key="bc"></p-toast>
+  <p-toast position="top-left" key="tl"></p-toast>
+</div>
+<div class="p-d-flex p-jc-center p-mt-5">
+  <div *ngIf="esPar">
+    <p-fieldset legend="Reglas de transicion de estados" [toggleable]="true">
+      <div class="p-d-flex">
+        <div class="p-mr-4">
+          <h5>Estados de P</h5>
+          <p-listbox [options]="estadoP" optionLabel="label" [style]="{'width':'6rem'}"></p-listbox>
+        </div>
+        <div class="p-mr-4">
+          <h5>Estados de Q</h5>
+          <p-listbox [options]="estadoQ" optionLabel="label" [style]="{'width':'6rem'}"></p-listbox>
+        </div>
+        <div>
+          <h5>Estados de R</h5>
+          <p-listbox [options]="estadoR" optionLabel="label" [style]="{'width':'6rem'}"></p-listbox>
+        </div>
+      </div>
+    </p-fieldset>
+  </div>
 </div>
