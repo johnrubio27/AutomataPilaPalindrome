@@ -85,10 +85,10 @@ export class AppComponent {
       this.esPalindrome = apdn.esPalindrome;
       if(this.esPalindrome){
         this.severity = 'success';
-        this.text = 'Es palindrome';
+        this.text = 'Es palindromo';
       }else{
         this.severity = 'error'
-        this.text = 'No es palindrome';
+        this.text = 'No es palindromo';
       }
     }
   }

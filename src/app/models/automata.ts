@@ -46,9 +46,9 @@ export class APND {
                     case 'b':
                         this.stack.pop();
                         this.stack.push('b');
-                        this.stack.push('b');
+                        this.stack.push('a');
                         this.movimientos.push(`${this.contador} pop b`);
-                        this.movimientos.push(`${this.contador} push bb`)
+                        this.movimientos.push(`${this.contador} push ba`)
                         break;
                     default:
                         break;
@@ -59,9 +59,9 @@ export class APND {
                     case '#':
                         this.stack.pop();
                         this.stack.push('#');                      
-                        this.stack.push('a');
+                        this.stack.push('b');
                         this.movimientos.push(`${this.contador} pop #`);
-                        this.movimientos.push(`${this.contador} push #a`);
+                        this.movimientos.push(`${this.contador} push #b`);
                         break;
                     case 'a':
                         this.stack.pop();
